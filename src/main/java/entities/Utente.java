@@ -1,35 +1,37 @@
 package entities;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
+@Table(name = "utenti")
 public class Utente {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
+
     private String nome;
     private String cognome;
-    @Temporal(TemporalType.DATE)
-    private Date dataNascita;
-    private String numeroTessera;
+    @Column(name = "data_di_nascita")
+    private LocalDate dataDiNascita;
 
-    public Utente() {
-    }
+    @Column(name="numero_di_tessera")
+    private int numeroDiTessera;
 
-    public Utente(String nome, String cognome, Date dataNascita, String numeroTessera) {
+    @OneToMany(mappedBy = "utente")
+    @Column(name = "elementi_prestati")
+    private List<Prestito> elementiPrestati;
+
+    public Utente(int id, String nome, String cognome, LocalDate dataDiNascita, int numeroDiTessera) {
+        this.id = id;
         this.nome = nome;
         this.cognome = cognome;
-        this.dataNascita = dataNascita;
-        this.numeroTessera = numeroTessera;
+        this.dataDiNascita = dataDiNascita;
+        this.numeroDiTessera = numeroDiTessera;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public Utente() {
     }
 
     public String getNome() {
@@ -48,19 +50,30 @@ public class Utente {
         this.cognome = cognome;
     }
 
-    public Date getDataNascita() {
-        return dataNascita;
+    public LocalDate getDataDiNascita() {
+        return dataDiNascita;
     }
 
-    public void setDataNascita(Date dataNascita) {
-        this.dataNascita = dataNascita;
+    public void setDataDiNascita(LocalDate dataDiNascita) {
+        this.dataDiNascita = dataDiNascita;
     }
 
-    public String getNumeroTessera() {
-        return numeroTessera;
+    public int getNumeroDiTessera() {
+        return numeroDiTessera;
     }
 
-    public void setNumeroTessera(String numeroTessera) {
-        this.numeroTessera = numeroTessera;
+    public void setNumeroDiTessera(int numeroDiTessera) {
+        this.numeroDiTessera = numeroDiTessera;
+    }
+
+    @Override
+    public String toString() {
+        return "Utente{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", dataDiNascita=" + dataDiNascita +
+                ", numeroDiTessera=" + numeroDiTessera +
+                '}';
     }
 }
