@@ -42,9 +42,7 @@ public class PrestitoDao {
         et.commit();
     }
 
-    //Query varie
 
-    //get elementi in prestito attualmente
     public List<Catalogo> getElementiInPrestitoByNumTessera(int tessera) {
         Query query = em.createQuery("select p.elementoPrestato from Prestito p where p.utente.numeroDiTessera = :tessera and p.dataRestituzioneEffettiva is null");
         query.setParameter("tessera", tessera);
@@ -52,7 +50,6 @@ public class PrestitoDao {
     }
 
 
-    //get prestiti scaduti, non ancora restituiti
 
     public List<Prestito> getPrestitiScaduti() {
         LocalDate dataOggi = LocalDate.now();

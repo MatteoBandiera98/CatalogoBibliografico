@@ -25,6 +25,7 @@ public class CatalogoDao {
 
     public Catalogo getById(String isbn) {
         return em.find(Catalogo.class, UUID.fromString(isbn));
+
     }
 
     public void delete(UUID isbn) {

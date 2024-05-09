@@ -2,7 +2,6 @@ package entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Entity
 @Table(name = "prestiti")
@@ -10,7 +9,7 @@ public class Prestito {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "utente_id")
@@ -22,6 +21,7 @@ public class Prestito {
 
     @Column(name = "data_inizio_prestito")
     private LocalDate dataInizioPrestito;
+
     @Column(name = "data_restituzione_prevista")
     private LocalDate dataRestituzionePrevista;
 
@@ -43,6 +43,14 @@ public class Prestito {
     }
 
     public Prestito() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Utente getUtente() {

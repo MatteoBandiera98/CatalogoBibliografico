@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.time.LocalDate;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -145,7 +146,34 @@ public class Main {
 
 
 
-        Rivista rivistaEsistente = (Rivista) elementoCatalogoDao.getById("cf2fe695-41cd-43e4-bee6-0931a7c17c38");
+       Rivista rivistaEsistente = (Rivista) elementoCatalogoDao.getById("031f5f18-a624-4d61-97db-b56ec91e1118");
+
+        System.out.println("rivistaEsistente:");
+        System.out.println(rivistaEsistente);
+
+      /*  elementoCatalogoDao.save(libro1);
+        elementoCatalogoDao.save(libro2);
+        elementoCatalogoDao.save(libro3);
+        elementoCatalogoDao.save(libro4);
+        elementoCatalogoDao.save(libro5);
+        elementoCatalogoDao.save(libro6);
+        elementoCatalogoDao.save(libro7);
+        elementoCatalogoDao.save(libro8);
+        elementoCatalogoDao.save(libro9);
+        elementoCatalogoDao.save(libro10);
+
+
+        // Salvataggio delle riviste
+        elementoCatalogoDao.save(rivista1);
+        elementoCatalogoDao.save(rivista2);
+        elementoCatalogoDao.save(rivista3);
+        elementoCatalogoDao.save(rivista4);
+        elementoCatalogoDao.save(rivista5);
+        elementoCatalogoDao.save(rivista6);
+        elementoCatalogoDao.save(rivista7);
+        elementoCatalogoDao.save(rivista8); */
+
+
 
 
 
@@ -161,14 +189,23 @@ public class Main {
         utente2.setDataDiNascita(LocalDate.of(1992, 12, 3));
         utente2.setNumeroDiTessera(67891);
 
+      /*  utenteDao.save(utente1);
+        utenteDao.save(utente2); */
+
         Prestito prestito1 = new Prestito();
         prestito1.setUtente(utente2);
         prestito1.setElementoPrestato(libro1);
         prestito1.setDataInizioPrestito(LocalDate.of(2024, 2, 10));
 
+       /* prestitoDao.save(prestito1); */
+
 
         prestitoDao.getPrestitiScaduti().forEach(System.out::println
         );
+
+
+
+
 
 
     }

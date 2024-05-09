@@ -20,18 +20,17 @@ public class Utente {
     private int numeroDiTessera;
 
     @OneToMany(mappedBy = "utente")
-    @Column(name = "elementi_prestati")
-    private List<Prestito> elementiPrestati;
-
-    public Utente(int id, String nome, String cognome, LocalDate dataDiNascita, int numeroDiTessera) {
-        this.id = id;
-        this.nome = nome;
-        this.cognome = cognome;
-        this.dataDiNascita = dataDiNascita;
-        this.numeroDiTessera = numeroDiTessera;
-    }
+    private List<Prestito> prestiti;
 
     public Utente() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -64,6 +63,14 @@ public class Utente {
 
     public void setNumeroDiTessera(int numeroDiTessera) {
         this.numeroDiTessera = numeroDiTessera;
+    }
+
+    public List<Prestito> getPrestiti() {
+        return prestiti;
+    }
+
+    public void setPrestiti(List<Prestito> prestiti) {
+        this.prestiti = prestiti;
     }
 
     @Override
